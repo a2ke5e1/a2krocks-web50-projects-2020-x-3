@@ -28,7 +28,7 @@ if not os.getenv("SECRET_KEY_3"):
 SECRET_KEY = os.getenv("SECRET_KEY_3")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["localhost", "127.0.0.1", "https://web50-project-2020-x-3.herokuapp.com"]
 
