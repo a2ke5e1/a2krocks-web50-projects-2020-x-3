@@ -1,0 +1,45 @@
+{% extends 'orders/base.html' %}
+{% block content %}
+
+        <style>
+        ul {
+    list-style-type: none;
+}
+
+        li {
+            list-style-type: none;
+        }
+        </style>
+    <div class="mdc-elevation--z3 mLogin">
+        <form method="post">
+
+
+            {% csrf_token %}
+
+
+            <div class="mReg_grid">
+
+                  <a class="mdc-icon-button material-icons-outlined" href="/">
+                    <svg class="bi bi-arrow-left-short" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                              d="M7.854 4.646a.5.5 0 010 .708L5.207 8l2.647 2.646a.5.5 0 01-.708.708l-3-3a.5.5 0 010-.708l3-3a.5.5 0 01.708 0z"
+                              clip-rule="evenodd"/>
+                        <path fill-rule="evenodd" d="M4.5 8a.5.5 0 01.5-.5h6.5a.5.5 0 010 1H5a.5.5 0 01-.5-.5z"
+                              clip-rule="evenodd"/>
+                    </svg>
+                </a>
+
+                {{ form.as_ul }}
+
+                <button class="mdc-button mdc-button--outlined" type="submit"><span class="mdc-button__ripple"></span>
+                    Submit
+                </button>
+                <a href="/login" class="mdc-button mdc-button--outlined" type="submit"><span
+                        class="mdc-button__ripple"></span>
+                    Already Have a Account? Login in
+                </a>
+            </div>
+        </form>
+    </div>
+{% endblock %}

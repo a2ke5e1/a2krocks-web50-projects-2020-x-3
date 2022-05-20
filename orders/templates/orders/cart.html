@@ -1,0 +1,207 @@
+{% extends 'orders/base.html' %}
+{% block content %}
+
+    <style>
+        .grid {
+
+            margin-left: auto;
+            margin-right: auto;
+            display: grid;
+            grid-column-gap: 50px;
+            grid-template-columns: auto auto;
+
+        }
+
+        .grid-items {
+        }
+    </style>
+
+
+                <a class="mdc-icon-button material-icons-outlined" href="/">
+                    <svg class="bi bi-arrow-left-short" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                              d="M7.854 4.646a.5.5 0 010 .708L5.207 8l2.647 2.646a.5.5 0 01-.708.708l-3-3a.5.5 0 010-.708l3-3a.5.5 0 01.708 0z"
+                              clip-rule="evenodd"/>
+                        <path fill-rule="evenodd" d="M4.5 8a.5.5 0 01.5-.5h6.5a.5.5 0 010 1H5a.5.5 0 01-.5-.5z"
+                              clip-rule="evenodd"/>
+                    </svg>
+                </a>
+
+    {% if allow_order == True %}
+
+        <div class="mdc-elevation--z1 mCart">
+        <center><h3>Your Cart</h3></center>
+          <div class="grid ">
+            <h4>Name</h4>
+          <h4>Quantity</h4>
+            <h4>Pizza </h4>
+            <h4></h4>
+
+            {% for salad, salad_count in pizza_names.items %}
+                <div class="grid-items">
+                    {% if salad != "" %}
+                        {{ salad }}
+                    {% endif %}
+
+                </div>
+                <div class="grid-items">
+                    {% if salad != "" %}
+                        {{ salad_count }}
+                    {% endif %}
+                </div>
+            {% endfor %}
+
+            <h4>Salad</h4>
+            <h4></h4>
+
+            {% for salad, salad_count in salad_names.items %}
+                <div class="grid-items">
+                    {% if salad != "" %}
+                        {{ salad }}
+                    {% endif %}
+
+                </div>
+                <div class="grid-items">
+                    {% if salad != "" %}
+                        {{ salad_count }}
+                    {% endif %}
+                </div>
+            {% endfor %}
+            <h4>Pasta</h4>
+            <h4></h4>
+
+            {% for salad, salad_count in pasta_names.items %}
+                <div class="grid-items">
+                    {% if salad != "" %}
+                        {{ salad }}
+                    {% endif %}
+
+                </div>
+                <div class="grid-items">
+                    {% if salad != "" %}
+                        {{ salad_count }}
+                    {% endif %}
+                </div>
+            {% endfor %}
+
+            <h4>Subs</h4>
+            <h4></h4>
+
+            {% for salad, salad_count in sub_names.items %}
+                <div class="grid-items">
+                    {% if salad != "" %}
+                        {{ salad }}
+                    {% endif %}
+
+                </div>
+                <div class="grid-items">
+                    {% if salad != "" %}
+                        {{ salad_count }}
+                    {% endif %}
+                </div>
+            {% endfor %}
+
+
+
+            <h4>Dinner Platter</h4>
+            <h4></h4>
+
+            {% for salad, salad_count in dp_names.items %}
+                <div class="grid-items">
+                    {% if salad != "" %}
+                        {{ salad }}
+                    {% endif %}
+
+                </div>
+                <div class="grid-items">
+                    {% if salad != "" %}
+                        {{ salad_count }}
+                    {% endif %}
+                </div>
+            {% endfor %}
+
+            <div>
+                 <div><b>Total</b></div>
+            </div>
+            <div>
+
+                <div id="total">${{ total }}</div>
+            </div>
+            <div style="margin-top: 10px" class="grid-items">
+
+
+                <button class="mdc-button mdc-button--outlined" onclick="deleteorder()"><span
+                        class="mdc-button__ripple"></span>Clear Cart
+                </button>
+            </div>
+            <div style="margin-top: 10px" class="grid-items">
+
+                <button class="mdc-button mdc-button--outlined" onclick="confirm_order('{{ order_id }}')"><span
+                        class="mdc-button__ripple"></span> Order
+                </button>
+            </div>
+
+
+        </div>
+        </div>
+
+
+    {% else %}
+       <div style="width: 50%!important; height: 50%!important;"  class="mCart">
+       <center>
+           <video id="video" playsinline="" muted="" autoplay="" loop="" data-silent="true" src="https://cdn.dribbble.com/users/887568/screenshots/3172047/ufo.gif?vid=1">
+          </video>
+       </center>
+        <center style="margin-bottom: 20px"> No Items</center>
+        <center>
+            <a href="/" class="mdc-button mdc-button--outlined">
+           <span class="mdc-button__ripple">
+           </span>
+           Home
+       </a>
+        </center>
+       </div>
+    {% endif %}
+
+
+
+
+    <script>
+        function confirm_order(sub_id) {
+
+
+            if ('{{ allow_order }}' === "True") {
+                var retVal = confirm("Do you want to continue ?");
+                if (retVal == true) {
+                    var xmlHttp = new XMLHttpRequest();
+                    xmlHttp.open("GET", `/confirm/${sub_id}`);
+                    xmlHttp.onload = function () {
+
+                        alert("Done")
+                        window.location = "/orders"
+
+
+                    }
+                    xmlHttp.send();
+                    return true;
+                } else {
+                    alert("Order Canceled")
+                    return false;
+                }
+            } else {
+                alert("No Item")
+            }
+
+
+        }
+
+        function deleteorder(sub_id) {
+            window.location = "/del/cart"
+        }
+
+
+    </script>
+
+
+{% endblock %}

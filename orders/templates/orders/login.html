@@ -1,0 +1,66 @@
+{% extends 'orders/base.html' %}
+{% block content %}
+    <div class="mdc-elevation--z3 mLogin">
+
+
+        <form action="{% url 'login' %}" method="post">
+            {% csrf_token %}
+
+
+
+            <div class="mLogin_grid">
+
+                <a class="mdc-icon-button material-icons-outlined" href="/">
+                    <svg class="bi bi-arrow-left-short" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                              d="M7.854 4.646a.5.5 0 010 .708L5.207 8l2.647 2.646a.5.5 0 01-.708.708l-3-3a.5.5 0 010-.708l3-3a.5.5 0 01.708 0z"
+                              clip-rule="evenodd"/>
+                        <path fill-rule="evenodd" d="M4.5 8a.5.5 0 01.5-.5h6.5a.5.5 0 010 1H5a.5.5 0 01-.5-.5z"
+                              clip-rule="evenodd"/>
+                    </svg>
+                </a>
+
+                 <div class="mdc-text-field username mdc-text-field--outlined">
+                <input class="mdc-text-field__input" name="username" id="id_username">
+                <div class="mdc-notched-outline">
+                    <div class="mdc-notched-outline__leading"></div>
+                    <div class="mdc-notched-outline__notch">
+                        <label for="id_username" style="color: #006bee" class="mdc-floating-label">username</label>
+                    </div>
+                    <div class="mdc-notched-outline__trailing"></div>
+                </div>
+            </div>
+
+
+
+
+           <div class="mdc-text-field password mdc-text-field--outlined">
+                <input type="password" class="mdc-text-field__input" name="passw" id="id_password">
+                <div class="mdc-notched-outline">
+                    <div class="mdc-notched-outline__leading"></div>
+                    <div class="mdc-notched-outline__notch">
+                        <label for="id_password" style="color: #006bee" class="mdc-floating-label">password</label>
+                    </div>
+                    <div class="mdc-notched-outline__trailing"></div>
+                </div>
+            </div>
+
+            <button class="mdc-button--outlined mdc-button"><span class="mdc-button__ripple"></span> Login</button>
+                  <a class="mdc-button mdc-button--outlined" href="/register"><span class="mdc-button__ripple"></span> Don't have
+            account? Register</a>
+
+            </div>
+
+
+        </form>
+
+
+    </div>
+
+
+    <script>
+         mdc.textField.MDCTextField.attachTo(document.querySelector('.username'));
+          mdc.textField.MDCTextField.attachTo(document.querySelector('.password'));
+    </script>
+{% endblock %}

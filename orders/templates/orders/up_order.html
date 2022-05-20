@@ -1,0 +1,152 @@
+{% extends 'orders/base.html' %}
+{% block content %}
+
+    <style>
+        .grid {
+            display: grid;
+            grid-template-columns: auto auto;
+        }
+    </style>
+
+    <div>
+
+                <a class="mdc-icon-button material-icons-outlined" href="/">
+                    <svg class="bi bi-arrow-left-short" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                              d="M7.854 4.646a.5.5 0 010 .708L5.207 8l2.647 2.646a.5.5 0 01-.708.708l-3-3a.5.5 0 010-.708l3-3a.5.5 0 01.708 0z"
+                              clip-rule="evenodd"/>
+                        <path fill-rule="evenodd" d="M4.5 8a.5.5 0 01.5-.5h6.5a.5.5 0 010 1H5a.5.5 0 01-.5-.5z"
+                              clip-rule="evenodd"/>
+                    </svg>
+                </a>
+        {% for i in mOrders %}
+            <div class="mdc-elevation--z2 mOrders">
+            <h3>Order: {{ i.orders_id }}</h3>
+             <h3>User: {{ i.user }}</h3>
+            <b>Status :</b> {% if i.status == "p" %}
+            PENDING
+                 <button class="mdc-button mdc-button--outlined" onclick="setStatusCompleted('{{ i.orders_id }}')"><span class="mdc-button__ripple"></span> Mark Completed</button>
+        {% else %}
+            COMPLETED
+
+
+        {% endif %} <br>
+            <h3>Total: ${{ i.total }}</h3>
+            <br>
+            <div class="grid">
+                <h4>Name</h4>
+                <h4>Quantity</h4>
+                <h4>Pizza</h4>
+                <div></div>
+
+                {% for x, y in i.pizza_name.items %}
+
+                    {% if x != "" %}
+                        <div class="grid-item">
+                            {{ x }}
+                        </div>
+                        <div class="grid-item">
+                            {{ y }}
+                        </div>
+                    {% endif %}
+
+
+                {% endfor %}
+
+
+                <h4>Subs</h4>
+                <div></div>
+                {% for x, y in i.sub_name.items %}
+
+                    {% if x != "" %}
+                        <div class="grid-tem">
+                            {{ x }}
+                        </div>
+                        <div class="grid-item">
+                            {{ y }}
+                        </div>
+                    {% endif %}
+
+
+                {% endfor %}
+
+                <h4>Dinner Platter</h4>
+                <div></div>
+                {% for x, y in i.dp_name.items %}
+
+                    {% if x != "" %}
+                        <div class="grid-tem">
+                            {{ x }}
+                        </div>
+                        <div class="grid-item">
+                            {{ y }}
+                        </div>
+                    {% endif %}
+
+
+                {% endfor %}
+
+                <h4>Salad</h4>
+                <div></div>
+                {% for x, y in i.salad_name.items %}
+
+                    {% if x != "" %}
+                        <div class="grid-tem">
+                            {{ x }}
+                        </div>
+                        <div class="grid-item">
+                            {{ y }}
+                        </div>
+                    {% endif %}
+
+
+                {% endfor %}
+
+
+                <h4>Pasta</h4>
+                <div></div>
+
+
+                {% for x, y in i.pasta_name.items %}
+
+                    {% if x != "" %}
+                        <div class="grid-tem">
+                            {{ x }}
+                        </div>
+                        <div class="grid-item">
+                            {{ y }}
+                        </div>
+                    {% endif %}
+
+
+                {% endfor %}
+            </div>
+            </div>
+            <br>
+        {% endfor %}
+    </div>
+    
+    
+    <script>
+        function setStatusCompleted(id_order) {
+             var xmlHttp = new XMLHttpRequest();
+                xmlHttp.open("GET", `markCompleted/${id_order}`);
+                xmlHttp.onload = function () {
+
+                    if (xmlHttp.responseText === "success") {
+                        alert("Mark Completed")
+                        window.location = "/coming_orders"
+                    } else {
+                        alert("Failed")
+                    }
+
+
+                }
+                xmlHttp.send();
+        }
+    </script>
+
+
+
+{% endblock %}

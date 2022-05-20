@@ -1,0 +1,106 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,100;1,400;1,500&display=swap");
+:root {
+  --mdc-theme-primary: #006bee;
+  --mdc-theme-secondary: #018786;
+  --mdc-theme-background: #fff;
+  --mdc-theme-surface: #fff;
+  --mdc-theme-error: #b00020;
+  --mdc-theme-on-primary: #fff;
+  --mdc-theme-on-secondary: #fff;
+  --mdc-theme-on-surface: #000;
+  --mdc-theme-on-error: #fff;
+  --mdc-theme-text-primary-on-background: rgba(0, 0, 0, 0.87);
+  --mdc-theme-text-secondary-on-background: rgba(0, 0, 0, 0.54);
+  --mdc-theme-text-hint-on-background: rgba(0, 0, 0, 0.38);
+  --mdc-theme-text-disabled-on-background: rgba(0, 0, 0, 0.38);
+  --mdc-theme-text-icon-on-background: rgba(0, 0, 0, 0.38);
+  --mdc-theme-text-primary-on-light: rgba(0, 0, 0, 0.87);
+  --mdc-theme-text-secondary-on-light: rgba(0, 0, 0, 0.54);
+  --mdc-theme-text-hint-on-light: rgba(0, 0, 0, 0.38);
+  --mdc-theme-text-disabled-on-light: rgba(0, 0, 0, 0.38);
+  --mdc-theme-text-icon-on-light: rgba(0, 0, 0, 0.38);
+  --mdc-theme-text-primary-on-dark: white;
+  --mdc-theme-text-secondary-on-dark: rgba(255, 255, 255, 0.7);
+  --mdc-theme-text-hint-on-dark: rgba(255, 255, 255, 0.5);
+  --mdc-theme-text-disabled-on-dark: rgba(255, 255, 255, 0.5);
+  --mdc-theme-text-icon-on-dark: rgba(255, 255, 255, 0.5);
+}
+
+body {
+  font-family: "Roboto", sans-serif !important;
+}
+
+.mAppBar {
+  border-radius: 0.65rem !important;
+}
+
+.mBody {
+  border-radius: 0.65rem !important;
+  padding: 15px !important;
+  margin-top: 10px;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  outline: 0;
+  box-shadow: none;
+  background: #006bee;
+  background-image: none;
+  border-color: #006bee;
+  border-width: 2px;
+  border-style: solid;
+}
+
+select {
+  flex: 1;
+  margin: 2px;
+  padding: 8px;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.mCart {
+  min-width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  width: fit-content;
+  padding: 15px;
+  border-radius: 10px;
+  border: solid #006bee;
+}
+
+.mOrders {
+  min-width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  width: fit-content;
+  padding: 15px;
+  border-radius: 10px;
+  border: solid #006bee;
+}
+
+.mLogin {
+  border-radius: 0.65rem;
+  padding: 20px;
+  width: fit-content;
+  min-width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mLogin_grid {
+  display: grid;
+  row-gap: 20px;
+  grid-template-columns: auto;
+}
+
+.mReg_grid {
+  display: grid;
+  row-gap: 10px;
+  grid-template-columns: auto;
+}
+
+/*# sourceMappingURL=style.css.map */
